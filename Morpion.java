@@ -38,18 +38,19 @@ class Morpion	{
 		String []lignes;
 		lignes=new String[colonnes.length];
 		char ligne= '1';
-		for (int i =0;i> lignes.length;i++){
+		for (int i =0;i< lignes.length;i++){
 			lignes[i]=String.valueOf(ligne);
 			ligne+=1;
 		}
 		afficherPlateau(tableau,colonnes);
+		System.out.println("");
 		System.out.println("joueur " + joueur + " jouez SVP");
-		String typeReponse="colonne";
-		int j=saisirReponse(typeReponse,colonnes);
-		System.out.println( "==> saisir reponse --> j :" +j);
-		typeReponse="ligne";
+		String typeReponse="ligne";
 		int i=saisirReponse(typeReponse,lignes);
-		System.out.println( "==> saisir reponse --> i :" +i);
+		typeReponse="colonne";
+		int j=saisirReponse(typeReponse,colonnes);
+			
+		
 		tableau[i] [j]= "X";
 		return verifierSiGagne(tableau);
 	}
@@ -60,16 +61,9 @@ class Morpion	{
 		int i=-1;
 		
 		while (entree ==""){
-			System.out.println("av saisie : " + entree);
 			entree=saisie(typeReponse);
-			System.out.println("ap saisie : " + entree);
-//			if (entree> reponsesPossibles.length){
-//				entree=-1;
-//			}
 			for (i = 0; i < reponsesPossibles.length;i++){
-				System.out.println("boucle : " + i+ " entree " + entree + " table : " + reponsesPossibles[i]);
-				if (entree == reponsesPossibles[i]){
-					System.out.println("enfintrouve !!!");
+				if (entree.equals(reponsesPossibles[i])){
 					return i;
 										
 				}
@@ -112,7 +106,7 @@ class Morpion	{
 		}
 		System.out.println (ligne);
 		for (int i=0;i < tableau.length;i++){
-			ligne= i + " ! ";
+			ligne= i+1 + " ! ";
 			for (int j=0;j<tableau[i].length;j++){
 				ligne +=tableau[i][j] + " ! ";
 			}
